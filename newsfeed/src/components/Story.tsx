@@ -1,7 +1,7 @@
 import * as React from "react";
 import Card from "./Card";
 import Heading from "./Heading";
-import PosterByline, { type Props as PosterBylineProps } from "./PosterByline";
+import PosterByline from "./PosterByline";
 import StorySummary from "./StorySummary";
 import Image from "./Image";
 
@@ -23,7 +23,7 @@ const StoryFragment = graphql`
       ...PosterBylineFragment
     }
     thumbnail {
-      url
+      ...ImageFragment @arguments(width: 400, height: 400)
     }
   }
 `;
