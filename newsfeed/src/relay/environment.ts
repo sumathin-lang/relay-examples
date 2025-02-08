@@ -5,6 +5,7 @@ import {
   Network,
   Observable,
   createOperationDescriptor,
+  RelayFeatureFlags,
 } from "relay-runtime";
 import type {
   ExecuteFunction,
@@ -16,7 +17,20 @@ import type {
 } from "relay-runtime";
 
 import { graphql, buildSchema } from "graphql";
-import { RelayNetwork } from "relay-runtime/lib/network/RelayNetwork";
+import LiveResolverStore from "relay-runtime/lib/store/live-resolvers/LiveResolverStore";
+
+RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
+
+// It is recommended to log errors thrown by Resolvers
+function fieldLogger(event: any) {
+  if (event.kind === "relay_resolver.error") {
+    // Log this somewhere!
+    console.warn(
+      `Resolver error encountered in ${event.owner}.${event.fieldPath}`
+    );
+    console.warn(event.error);
+  }
+}
 
 const fetchFn: FetchFunction = (params, variables) => {
   const response = fetch("/api", {
@@ -67,16 +81,16 @@ const resolvers = {
   },
 };
 
-// 3. Define your GraphQL query
-const query = `
-  query MyQuery($userId: ID!) {
-    greeting
-    user(id: $userId) {
-      id
-      name
-    }
-  }
-`;
+// // 3. Define your GraphQL query
+// const query = `
+//   query MyQuery($userId: ID!) {
+//     greeting
+//     user(id: $userId) {
+//       id
+//       name
+//     }
+//   }
+// `;
 
 let environment: IEnvironment; // = createEnvironment();
 
@@ -89,16 +103,21 @@ export function createEnvironment(): IEnvironment {
   environment = new Environment({
     network: Network.create(
       async (operations: RequestParameters, variables: Variables) => {
-        const result = await graphql({
-          schema,
-          source: operations.text,
-          rootValue: resolvers,
-          variableValues: variables,
-        });
-        return result;
+        try {
+          const result = await graphql({
+            schema,
+            source: operations.text,
+            rootValue: resolvers,
+            variableValues: variables,
+          });
+          return result;
+        } catch (error) {
+          console.error(error);
+          return error;
+        }
       }
     ),
-    store: new Store(new RecordSource()),
+    store: new LiveResolverStore(new RecordSource()),
   });
   return environment;
 }
