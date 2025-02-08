@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d61677815eaf0cc7e17a76a03f91fdba>>
+ * @generated SignedSource<<64b18ac3568b74a87cc020abd98253a9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,7 +11,7 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 export type NewsfeedQuery$variables = {};
 export type NewsfeedQuery$data = {
-  readonly greeting: string | null;
+  readonly myGreeting: string;
 };
 export type NewsfeedQuery = {
   response: NewsfeedQuery$data;
@@ -24,7 +24,7 @@ var v0 = [
     "alias": null,
     "args": null,
     "kind": "ScalarField",
-    "name": "greeting",
+    "name": "myGreeting",
     "storageKey": null
   }
 ];
@@ -46,16 +46,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "929eeb1eb32f6293f1ecebc718558f0c",
+    "cacheID": "50260535694392905a7449388b65a631",
     "id": null,
     "metadata": {},
     "name": "NewsfeedQuery",
     "operationKind": "query",
-    "text": "query NewsfeedQuery {\n  greeting\n}\n"
+    "text": "query NewsfeedQuery {\n  myGreeting\n}\n"
   }
 };
 })();
 
-(node as any).hash = "17260ebecf1d7a93d6d47cc664635501";
+(node as any).hash = "7b94e366802658454327cd43eb382028";
 
 export default node;

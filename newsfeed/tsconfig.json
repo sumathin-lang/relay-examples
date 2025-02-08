@@ -1,4 +1,7 @@
 {
+  "grats": {
+    "nullableByDefault": false
+  },
   "compilerOptions": {
     "noEmit": true,
     "noImplicitAny": true,

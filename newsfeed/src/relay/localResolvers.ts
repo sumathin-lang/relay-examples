@@ -1,21 +1,25 @@
 import { DataID } from "relay-runtime";
 
-type BookModel = { name: string; id: DataID };
+// https://github.com/alunyov/relay-resolvers-example/blob/main/relay.config.json
+// type BookModel = { name: string; id: DataID };
 
-/**
- * @RelayResolver
- * @onType Query
- * @fieldName Book
- */
-export function Book(id: DataID): BookModel {
-  return { name: "Book Name", id: id };
-}
+// /**
+//  * @RelayResolver Book
+//  */
+// export function Book(id: DataID): BookModel {
+//   return { name: "Book Name", id: id };
+// }
 
-/**
- * @RelayResolver
- * @onType Book
- * @fieldName title
- */
-export function title(): string {
-  return "Hello World";
-}
+// /**
+//  * @RelayResolver Book.title: String
+//  */
+// export function title(): string {
+//   return "MobyDick";
+// }
+
+// /**
+//  * @RelayResolver Query.greeting: String
+//  */
+// export function greeting(): string {
+//   return "Hello World";
+// }

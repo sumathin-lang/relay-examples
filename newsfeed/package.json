@@ -13,7 +13,8 @@
     "watch-relay": "relay-compiler --watch",
     "watch-webpack": "webpack server",
     "watch-server": "nodemon ./server/index.mjs",
-    "dev": "concurrently npm:watch-* -c auto"
+    "dev": "concurrently npm:watch-* -c auto",
+    "grats": "grats"
   },
   "license": "MIT",
   "devDependencies": {
@@ -48,6 +49,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-relay": "^18.2.0",
-    "relay-runtime": "^18.2.0"
+    "relay-runtime": "^18.2.0",
+    "grats": "^0.0.31"
   }
 }

@@ -16,7 +16,7 @@ import { MyLocalState } from "./MyLocalState";
 
 const NewsfeedQuery = graphql`
   query NewsfeedQuery {
-    greeting
+    myGreeting
     # user(id: $userId) {
     #   id
     #   name
@@ -26,7 +26,7 @@ const NewsfeedQuery = graphql`
 
 export default function Newsfeed() {
   const data = useLazyLoadQuery<NewsfeedQueryType>(NewsfeedQuery, {});
-  const stories = data.greeting;
+  const stories = data.myGreeting;
   // As before:
   return (
     <div className="newsfeed">

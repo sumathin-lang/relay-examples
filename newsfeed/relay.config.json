@@ -1,6 +1,6 @@
 {
   "src": "./src",
-  "schema": "./server/schema.graphql",
+  "schema": "./schema.graphql",
   "language": "typescript",
   "featureFlags": {
     "enable_relay_resolver_transform": true
