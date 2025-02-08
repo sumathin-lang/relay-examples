@@ -5,12 +5,22 @@ import { graphql } from "relay-runtime";
 import { useLazyLoadQuery } from "react-relay";
 import type { NewsfeedQuery as NewsfeedQueryType } from "./__generated__/NewsfeedQuery.graphql";
 
+// const NewsfeedQuery = graphql`
+//   query NewsfeedQuery {
+//     topStories {
+//       id
+//       ...StoryFragment
+//     }
+//   }
+// `;
+
 const NewsfeedQuery = graphql`
   query NewsfeedQuery {
-    topStories {
-      id
-      ...StoryFragment
-    }
+    greeting
+    # user(id: $userId) {
+    #   id
+    #   name
+    # }
   }
 `;
 
@@ -20,12 +30,25 @@ export default function Newsfeed({}) {
   // As before:
   return (
     <div className="newsfeed">
-      {stories.map((story) => (
+      {/* {stories.map((story) => (
         <Story key={story.id} story={story} />
-      ))}
+      ))} */}
     </div>
   );
 }
+
+// export default function Newsfeed({}) {
+//   const data = useLazyLoadQuery<NewsfeedQueryType>(NewsfeedQuery, {});
+//   const stories = data.topStories;
+//   // As before:
+//   return (
+//     <div className="newsfeed">
+//       {stories.map((story) => (
+//         <Story key={story.id} story={story} />
+//       ))}
+//     </div>
+//   );
+// }
 
 // export default function Newsfeed() {
 //   const story = {
