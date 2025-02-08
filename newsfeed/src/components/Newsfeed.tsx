@@ -1,5 +1,4 @@
 import * as React from "react";
-import Story from "./Story";
 
 import { graphql } from "relay-runtime";
 import { useLazyLoadQuery } from "react-relay";
@@ -26,13 +25,14 @@ const NewsfeedQuery = graphql`
 
 export default function Newsfeed({}) {
   const data = useLazyLoadQuery<NewsfeedQueryType>(NewsfeedQuery, {});
-  const stories = data.topStories;
+  const stories = data.greeting;
   // As before:
   return (
     <div className="newsfeed">
       {/* {stories.map((story) => (
         <Story key={story.id} story={story} />
       ))} */}
+      <div>{stories}</div>
     </div>
   );
 }
