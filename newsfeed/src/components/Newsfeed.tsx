@@ -16,7 +16,14 @@ import { MyLocalState } from "./MyLocalState";
 
 const NewsfeedQuery = graphql`
   query NewsfeedQuery {
-    myGreeting
+    templates {
+      edges {
+        node {
+          name
+          id
+        }
+      }
+    }
     # user(id: $userId) {
     #   id
     #   name
@@ -26,15 +33,13 @@ const NewsfeedQuery = graphql`
 
 export default function Newsfeed() {
   const data = useLazyLoadQuery<NewsfeedQueryType>(NewsfeedQuery, {});
-  const stories = data.myGreeting;
+  const templates = data.templates.edges;
   // As before:
   return (
     <div className="newsfeed">
-      {/* {stories.map((story) => (
-        <Story key={story.id} story={story} />
-      ))} */}
-      <div>{stories}</div>
-      {/* <MyLocalState /> */}
+      {templates.map((template) => (
+        <div key={template.node.id}>{template.node.name}</div>
+      ))}
     </div>
   );
 }

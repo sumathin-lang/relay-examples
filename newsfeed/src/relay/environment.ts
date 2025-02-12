@@ -18,7 +18,7 @@ import type {
 
 import { graphql, buildSchema } from "graphql";
 import LiveResolverStore from "relay-runtime/lib/store/live-resolvers/LiveResolverStore";
-import { getSchema } from "../../schema";
+// import { getSchema } from "../../schema";
 
 RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
 
@@ -58,18 +58,98 @@ const fetchFn: FetchFunction = (params, variables) => {
 // }
 
 // 1. Define your GraphQL schema
+// const schema = buildSchema(`
+//   type Query {
+//     greeting: String
+//     user(id: ID!): User
+//   }
+
+//   type User {
+//     id: ID!
+//     name: String
+//   }
+// `);
+
 const schema = buildSchema(`
-  type Query {
-    greeting: String
-    user(id: ID!): User
-  }
+type Group {
+  description: String!
+  name: String!
+}
 
-  type User {
-    id: ID!
-    name: String
-  }
-`);
+type Query {
+  myGreeting: String!
+  templates: TemplateConnection
+}
 
+type Template {
+  id: String
+  name: String
+  # properties: TemplateProperties
+  type: String
+}
+
+type TemplateConnection {
+  edges: [TemplateEdge]
+  pageInfo: PageInfo
+}
+
+type TemplateEdge {
+  cursor: String
+  node: Template
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+}
+
+type Workflow {
+  id: String
+  name: String
+  properties: WorkflowProperties
+  type: String
+}
+
+type TemplateProperties {
+  # author: Author
+  categoryNames: [String!]
+  # connectionReferences: [TemplateConnectionReference!]
+  # definitionSummary: DefinitionSummary
+  description: String
+  displayName: String
+  galleryName: String
+  instantiationMessage: String
+  name: String
+  publishedTime: String
+  # statistics: Statistics
+  summary: String
+}
+
+type WorkflowProperties {
+  apiId: String
+  # connectionReferences: [ConnectionReferences!]
+  createdTime: String
+  # definitionSummary: DefinitionSummary
+  displayName: String
+  # environment: Environment
+  flowFailureAlertSubscribed: Boolean
+  flowSuspensionReason: String
+  flowSuspensionReasonDetails: String
+  flowSuspensionTime: String
+  isManaged: Boolean
+  lastModifiedTime: String
+  # licenseData: LicenseData
+  # parameters: WorkflowPropertiesParameters
+  plan: String
+  provisioningMethod: String
+  # runtimeConfiguration: RuntimeConfiguration
+  sharingType: String
+  state: String
+  templateName: String
+  userType: String
+}`);
 // 2. Create a resolver function
 const resolvers = {
   greeting: () => "Hello from GraphQL!",
@@ -79,6 +159,31 @@ const resolvers = {
       "2": { id: "2", name: "Jane Smith" },
     };
     return users[id] || null;
+  },
+  templates: () => {
+    return {
+      totalCount: 3,
+      edges: [
+        {
+          node: {
+            name: "Han Solo",
+            id: "1",
+          },
+          cursor: "Y3Vyc29yMg==",
+        },
+        {
+          node: {
+            name: "Leia Organa",
+            id: "2",
+          },
+          cursor: "Y3Vyc29yMw==",
+        },
+      ],
+      pageInfo: {
+        endCursor: "Y3Vyc29yMw==",
+        hasNextPage: false,
+      },
+    };
   },
 };
 
@@ -106,8 +211,8 @@ export function createEnvironment(): IEnvironment {
       async (operations: RequestParameters, variables: Variables) => {
         try {
           const result = await graphql({
-            //schema,
-            schema: getSchema(),
+            schema,
+            // schema: getSchema(),
             source: operations.text,
             rootValue: resolvers,
             variableValues: variables,
