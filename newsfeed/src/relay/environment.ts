@@ -86,6 +86,7 @@ type Template {
   name: String
   # properties: TemplateProperties
   type: String
+  workflow: Workflow
 }
 
 type TemplateConnection {
@@ -108,7 +109,6 @@ type PageInfo {
 type Workflow {
   id: String
   name: String
-  properties: WorkflowProperties
   type: String
 }
 
@@ -168,6 +168,10 @@ const resolvers = {
           node: {
             name: "Han Solo",
             id: "1",
+            workflow: {
+              name: "Workflow 1",
+              type: "Type 1",
+            },
           },
           cursor: "Y3Vyc29yMg==",
         },
@@ -175,6 +179,10 @@ const resolvers = {
           node: {
             name: "Leia Organa",
             id: "2",
+            workflow: {
+              name: "Workflow 2",
+              type: "Type 2",
+            },
           },
           cursor: "Y3Vyc29yMw==",
         },

@@ -3,7 +3,7 @@ import * as React from "react";
 import { graphql } from "relay-runtime";
 import { useClientQuery, useLazyLoadQuery } from "react-relay";
 import type { NewsfeedQuery as NewsfeedQueryType } from "./__generated__/NewsfeedQuery.graphql";
-import { MyLocalState } from "./MyLocalState";
+import { Workflow } from "./Workflow";
 
 // const NewsfeedQuery = graphql`
 //   query NewsfeedQuery {
@@ -21,9 +21,14 @@ const NewsfeedQuery = graphql`
         node {
           name
           id
+          type
+          workflow {
+            ...WorkflowFragment
+          }
         }
       }
     }
+
     # user(id: $userId) {
     #   id
     #   name
@@ -38,7 +43,10 @@ export default function Newsfeed() {
   return (
     <div className="newsfeed">
       {templates.map((template) => (
-        <div key={template.node.id}>{template.node.name}</div>
+        <>
+          <div key={template.node.id}>{template.node.name}</div>
+          <Workflow workflow={template.node.workflow} />
+        </>
       ))}
     </div>
   );

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8f3d12813947c9f57155e982a4a6f72e>>
+ * @generated SignedSource<<6608d42e6c108b50093456df3712bc20>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,6 +9,7 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
 export type NewsfeedQuery$variables = {};
 export type NewsfeedQuery$data = {
   readonly templates: {
@@ -16,6 +17,10 @@ export type NewsfeedQuery$data = {
       readonly node: {
         readonly id: string | null;
         readonly name: string | null;
+        readonly type: string | null;
+        readonly workflow: {
+          readonly " $fragmentSpreads": FragmentRefs<"WorkflowFragment">;
+        } | null;
       } | null;
     } | null> | null;
   } | null;
@@ -26,43 +31,78 @@ export type NewsfeedQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "alias": null,
-    "args": null,
-    "concreteType": "TemplateConnection",
-    "kind": "LinkedField",
-    "name": "templates",
-    "plural": false,
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+},
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "type",
+  "storageKey": null
+};
+return {
+  "fragment": {
+    "argumentDefinitions": [],
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "NewsfeedQuery",
     "selections": [
       {
         "alias": null,
         "args": null,
-        "concreteType": "TemplateEdge",
+        "concreteType": "TemplateConnection",
         "kind": "LinkedField",
-        "name": "edges",
-        "plural": true,
+        "name": "templates",
+        "plural": false,
         "selections": [
           {
             "alias": null,
             "args": null,
-            "concreteType": "Template",
+            "concreteType": "TemplateEdge",
             "kind": "LinkedField",
-            "name": "node",
-            "plural": false,
+            "name": "edges",
+            "plural": true,
             "selections": [
               {
                 "alias": null,
                 "args": null,
-                "kind": "ScalarField",
-                "name": "name",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "id",
+                "concreteType": "Template",
+                "kind": "LinkedField",
+                "name": "node",
+                "plural": false,
+                "selections": [
+                  (v0/*: any*/),
+                  (v1/*: any*/),
+                  (v2/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Workflow",
+                    "kind": "LinkedField",
+                    "name": "workflow",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "args": null,
+                        "kind": "FragmentSpread",
+                        "name": "WorkflowFragment"
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
                 "storageKey": null
               }
             ],
@@ -72,16 +112,6 @@ var v0 = [
         "storageKey": null
       }
     ],
-    "storageKey": null
-  }
-];
-return {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "NewsfeedQuery",
-    "selections": (v0/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -90,19 +120,70 @@ return {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "NewsfeedQuery",
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "TemplateConnection",
+        "kind": "LinkedField",
+        "name": "templates",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "TemplateEdge",
+            "kind": "LinkedField",
+            "name": "edges",
+            "plural": true,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Template",
+                "kind": "LinkedField",
+                "name": "node",
+                "plural": false,
+                "selections": [
+                  (v0/*: any*/),
+                  (v1/*: any*/),
+                  (v2/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Workflow",
+                    "kind": "LinkedField",
+                    "name": "workflow",
+                    "plural": false,
+                    "selections": [
+                      (v1/*: any*/),
+                      (v0/*: any*/),
+                      (v2/*: any*/)
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      }
+    ]
   },
   "params": {
-    "cacheID": "b1afeee755cf6dc2103d1660ca9dfd24",
+    "cacheID": "6d63eb15221178c793f1794e306c5816",
     "id": null,
     "metadata": {},
     "name": "NewsfeedQuery",
     "operationKind": "query",
-    "text": "query NewsfeedQuery {\n  templates {\n    edges {\n      node {\n        name\n        id\n      }\n    }\n  }\n}\n"
+    "text": "query NewsfeedQuery {\n  templates {\n    edges {\n      node {\n        name\n        id\n        type\n        workflow {\n          ...WorkflowFragment\n        }\n      }\n    }\n  }\n}\n\nfragment WorkflowFragment on Workflow {\n  id\n  name\n  type\n}\n"
   }
 };
 })();
 
-(node as any).hash = "58280e9af6784703444b72175487da20";
+(node as any).hash = "3cb3757555c0d82e686813a4cbdb3952";
 
 export default node;

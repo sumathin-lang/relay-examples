@@ -27,6 +27,7 @@ type Template {
   name: String
   properties: TemplateProperties
   type: String
+  workflow: Workflow
 }
 
 type TemplateConnection {
