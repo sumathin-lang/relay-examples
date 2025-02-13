@@ -8,23 +8,23 @@ type Props = {
   workflowInner: WorkflowInnerFragment$key;
 };
 
-// export const WorkflowInnerFragment = graphql`
-//   fragment WorkflowInnerFragment on Workflow {
-//     id
-//     name
-//     type
-//   }
-// `;
-
 export const WorkflowInnerFragment = graphql`
-  fragment WorkflowInnerFragment on WorkflowProperties {
-    apiId
-    displayName
+  fragment WorkflowInnerFragment on Workflow {
+    id
+    name
+    type
   }
 `;
+
+// export const WorkflowInnerFragment = graphql`
+//   fragment WorkflowInnerFragment on WorkflowProperties {
+//     apiId
+//     displayName
+//   }
+// `;
 
 export const WorkflowInner = ({ workflowInner }: Props) => {
   const data = useFragment(WorkflowInnerFragment, workflowInner);
 
-  return <div className="workflow">{data.displayName}</div>;
+  return <div className="workflow">{data.name}</div>;
 };

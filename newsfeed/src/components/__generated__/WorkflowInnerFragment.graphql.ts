@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6429ad2c59926db4376feea8f5b2ca57>>
+ * @generated SignedSource<<979877216e35709497520dff6fcfb987>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,8 +11,9 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type WorkflowInnerFragment$data = {
-  readonly apiId: string | null;
-  readonly displayName: string | null;
+  readonly id: string | null;
+  readonly name: string | null;
+  readonly type: string | null;
   readonly " $fragmentType": "WorkflowInnerFragment";
 };
 export type WorkflowInnerFragment$key = {
@@ -30,21 +31,28 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "apiId",
+      "name": "id",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "displayName",
+      "name": "name",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "type",
       "storageKey": null
     }
   ],
-  "type": "WorkflowProperties",
+  "type": "Workflow",
   "abstractKey": null
 };
 
-(node as any).hash = "1f5a44aacfeac088f1c27f18297fce28";
+(node as any).hash = "686e160cc7d2dfce59e78fecef17b753";
 
 export default node;

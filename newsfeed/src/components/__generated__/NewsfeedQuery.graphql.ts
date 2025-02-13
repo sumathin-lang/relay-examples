@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f6de061c9e713bd05d1cab1b3304efbc>>
+ * @generated SignedSource<<43b0e71dfce80793bc1760dd99b8e70e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -34,6 +34,27 @@ const node: ConcreteRequest = (function(){
 var v0 = {
   "alias": null,
   "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+},
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v2 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "type",
+  "storageKey": null
+},
+v3 = {
+  "alias": null,
+  "args": null,
   "concreteType": "TemplateConnection",
   "kind": "LinkedField",
   "name": "templates",
@@ -55,27 +76,9 @@ var v0 = {
           "name": "node",
           "plural": false,
           "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "name",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "id",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "type",
-              "storageKey": null
-            }
+            (v0/*: any*/),
+            (v1/*: any*/),
+            (v2/*: any*/)
           ],
           "storageKey": null
         }
@@ -92,7 +95,7 @@ return {
     "metadata": null,
     "name": "NewsfeedQuery",
     "selections": [
-      (v0/*: any*/),
+      (v3/*: any*/),
       {
         "alias": null,
         "args": null,
@@ -119,7 +122,7 @@ return {
     "kind": "Operation",
     "name": "NewsfeedQuery",
     "selections": [
-      (v0/*: any*/),
+      (v3/*: any*/),
       {
         "alias": null,
         "args": null,
@@ -128,43 +131,21 @@ return {
         "name": "workflow",
         "plural": false,
         "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "WorkflowProperties",
-            "kind": "LinkedField",
-            "name": "properties",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "apiId",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "displayName",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
+          (v1/*: any*/),
+          (v0/*: any*/),
+          (v2/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "4c2bf0ba47350f7cc86b6502c022dace",
+    "cacheID": "8c632fd372adc6577e94662c5ded904e",
     "id": null,
     "metadata": {},
     "name": "NewsfeedQuery",
     "operationKind": "query",
-    "text": "query NewsfeedQuery {\n  templates {\n    edges {\n      node {\n        name\n        id\n        type\n      }\n    }\n  }\n  workflow {\n    ...WorkflowFragment\n  }\n}\n\nfragment WorkflowFragment on Workflow {\n  properties {\n    ...WorkflowInnerFragment\n  }\n}\n\nfragment WorkflowInnerFragment on WorkflowProperties {\n  apiId\n  displayName\n}\n"
+    "text": "query NewsfeedQuery {\n  templates {\n    edges {\n      node {\n        name\n        id\n        type\n      }\n    }\n  }\n  workflow {\n    ...WorkflowFragment\n  }\n}\n\nfragment WorkflowFragment on Workflow {\n  ...WorkflowInnerFragment\n}\n\nfragment WorkflowInnerFragment on Workflow {\n  id\n  name\n  type\n}\n"
   }
 };
 })();

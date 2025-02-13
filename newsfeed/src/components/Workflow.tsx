@@ -11,9 +11,10 @@ type Props = {
 
 export const WorkflowFragment = graphql`
   fragment WorkflowFragment on Workflow {
-    properties {
-      ...WorkflowInnerFragment
-    }
+    # properties {
+    #   ...WorkflowInnerFragment
+    # }
+    ...WorkflowInnerFragment
   }
 `;
 
@@ -21,5 +22,5 @@ export const Workflow = ({ workflow }: Props) => {
   const data = useFragment(WorkflowFragment, workflow);
 
   //   return <div className="workflow">{data}</div>;
-  return <WorkflowInner workflowInner={data.properties} />;
+  return <WorkflowInner workflowInner={data} />;
 };
