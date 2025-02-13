@@ -14,7 +14,8 @@
     "watch-webpack": "webpack server",
     "watch-server": "nodemon ./server/index.mjs",
     "dev": "concurrently npm:watch-* -c auto",
-    "grats": "grats"
+    "grats": "grats",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "license": "MIT",
   "devDependencies": {
@@ -41,15 +42,21 @@
     "typescript": "^4.9.3",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/client-preset": "^4.5.0",
+    "@graphql-codegen/introspection": "^4.0.3",
+    "@graphql-codegen/typescript": "^4.1.1",
+    "@graphql-codegen/typescript-resolvers": "^4.4.0",
+    "@eddeee888/gcg-typescript-resolver-files": "^0.12.0"
   },
   "dependencies": {
     "graphiql": "^2.2.0",
     "graphql": "^16.10.0",
+    "grats": "^0.0.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-relay": "^18.2.0",
-    "relay-runtime": "^18.2.0",
-    "grats": "^0.0.31"
+    "relay-runtime": "^18.2.0"
   }
 }
