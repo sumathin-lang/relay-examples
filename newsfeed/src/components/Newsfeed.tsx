@@ -4,6 +4,7 @@ import { graphql } from "relay-runtime";
 import { useClientQuery, useLazyLoadQuery } from "react-relay";
 import type { NewsfeedQuery as NewsfeedQueryType } from "./__generated__/NewsfeedQuery.graphql";
 import { Workflow } from "./Workflow";
+import { Parent } from "./Parent";
 
 // const NewsfeedQuery = graphql`
 //   query NewsfeedQuery {
@@ -14,42 +15,51 @@ import { Workflow } from "./Workflow";
 //   }
 // `;
 
+// const NewsfeedQuery = graphql`
+//   query NewsfeedQuery {
+//     templates {
+//       edges {
+//         node {
+//           name
+//           id
+//           type
+//           # workflow {
+//           #   ...WorkflowFragment
+//           # }
+//         }
+//       }
+//     }
+
+//     workflow {
+//       ...WorkflowFragment
+//     }
+//   }
+// `;
+
 const NewsfeedQuery = graphql`
   query NewsfeedQuery {
-    templates {
-      edges {
-        node {
-          name
-          id
-          type
-          # workflow {
-          #   ...WorkflowFragment
-          # }
-        }
-      }
-    }
-
-    workflow {
-      ...WorkflowFragment
-    }
+    ...ParentFragment
   }
 `;
 
 export default function Newsfeed() {
   const data = useLazyLoadQuery<NewsfeedQueryType>(NewsfeedQuery, {});
-  const templates = data.templates.edges;
+  // const templates = data.templates.edges;
   // As before:
   return (
+    // <>
+    //   <div className="newsfeed">
+    //     {templates.map((template) => (
+    //       <>
+    //         <div key={template.node.id}>{template.node.name}</div>
+    //         {/* <Workflow workflow={template.node.workflow} /> */}
+    //       </>
+    //     ))}
+    //   </div>
+    //   <Workflow workflow={data.workflow} />
+    // </>
     <>
-      <div className="newsfeed">
-        {templates.map((template) => (
-          <>
-            <div key={template.node.id}>{template.node.name}</div>
-            {/* <Workflow workflow={template.node.workflow} /> */}
-          </>
-        ))}
-      </div>
-      <Workflow workflow={data.workflow} />
+      <Parent parent={data} />
     </>
   );
 }

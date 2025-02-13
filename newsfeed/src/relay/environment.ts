@@ -154,7 +154,7 @@ type WorkflowProperties {
 }`);
 // 2. Create a resolver function
 const resolvers = {
-  greeting: () => "Hello from GraphQL!",
+  myGreeting: () => "Hello from GraphQL!",
   user: ({ id }: any) => {
     const users = {
       "1": { id: "1", name: "John Doe" },
