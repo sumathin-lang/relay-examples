@@ -22,20 +22,16 @@ const NewsfeedQuery = graphql`
           name
           id
           type
-          workflow {
-            ...WorkflowFragment
-          }
+          # workflow {
+          #   ...WorkflowFragment
+          # }
         }
       }
     }
+
     workflow {
       ...WorkflowFragment
     }
-
-    # user(id: $userId) {
-    #   id
-    #   name
-    # }
   }
 `;
 
@@ -49,7 +45,7 @@ export default function Newsfeed() {
         {templates.map((template) => (
           <>
             <div key={template.node.id}>{template.node.name}</div>
-            <Workflow workflow={template.node.workflow} />
+            {/* <Workflow workflow={template.node.workflow} /> */}
           </>
         ))}
       </div>

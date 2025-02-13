@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e0e768c864fe0c62aa089982a99d2b2a>>
+ * @generated SignedSource<<0d7479a5ac3604405573fa05926ba722>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,9 +11,9 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type WorkflowFragment$data = {
-  readonly id: string | null;
-  readonly name: string | null;
-  readonly type: string | null;
+  readonly properties: {
+    readonly " $fragmentSpreads": FragmentRefs<"WorkflowInnerFragment">;
+  } | null;
   readonly " $fragmentType": "WorkflowFragment";
 };
 export type WorkflowFragment$key = {
@@ -30,22 +30,17 @@ const node: ReaderFragment = {
     {
       "alias": null,
       "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "name",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "type",
+      "concreteType": "WorkflowProperties",
+      "kind": "LinkedField",
+      "name": "properties",
+      "plural": false,
+      "selections": [
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "WorkflowInnerFragment"
+        }
+      ],
       "storageKey": null
     }
   ],
@@ -53,6 +48,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "63e003ed0934c58c940eee11893109cb";
+(node as any).hash = "14d27d9d3f2c7c481403e0d2d3735178";
 
 export default node;

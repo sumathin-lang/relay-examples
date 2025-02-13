@@ -111,6 +111,7 @@ type Workflow {
   id: String
   name: String
   type: String
+  properties: WorkflowProperties
 }
 
 type TemplateProperties {
@@ -166,6 +167,9 @@ const resolvers = {
       id: "1",
       name: "Workflow 1",
       type: "Type 1",
+      properties: {
+        displayName: "Workflow ROOT PROP",
+      },
     };
   },
   templates: () => {
@@ -179,6 +183,9 @@ const resolvers = {
             workflow: {
               name: "Workflow 1",
               type: "Type 1",
+              properties: {
+                displayName: "Workflow PROP1",
+              },
             },
           },
           cursor: "Y3Vyc29yMg==",
@@ -190,6 +197,9 @@ const resolvers = {
             workflow: {
               name: "Workflow 2",
               type: "Type 2",
+              properties: {
+                displayName: "Workflow PROP2",
+              },
             },
           },
           cursor: "Y3Vyc29yMw==",
