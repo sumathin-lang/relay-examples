@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d9cbf0d04581c68fc2ed62b5f5206f2e>>
+ * @generated SignedSource<<fad31d551135e58221830945da49a0da>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -47,16 +47,70 @@ const node: ConcreteRequest = {
         "kind": "ScalarField",
         "name": "myGreeting",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "TemplateConnection",
+        "kind": "LinkedField",
+        "name": "templates",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "TemplateEdge",
+            "kind": "LinkedField",
+            "name": "edges",
+            "plural": true,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Template",
+                "kind": "LinkedField",
+                "name": "node",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "name",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "type",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "ae1f92c73b269bb265ba2e8a3475ccf9",
+    "cacheID": "8df11e54c9de7eb8a0e7b9faaf2baed7",
     "id": null,
     "metadata": {},
     "name": "NewsfeedQuery",
     "operationKind": "query",
-    "text": "query NewsfeedQuery {\n  ...ParentFragment\n}\n\nfragment ParentFragment on Query {\n  myGreeting\n}\n"
+    "text": "query NewsfeedQuery {\n  ...ParentFragment\n}\n\nfragment ChildOneFragment on Query {\n  templates {\n    edges {\n      node {\n        id\n        name\n        type\n      }\n    }\n  }\n}\n\nfragment ParentFragment on Query {\n  myGreeting\n  ...ChildOneFragment\n}\n"
   }
 };
 
