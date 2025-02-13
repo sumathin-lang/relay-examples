@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<43b0e71dfce80793bc1760dd99b8e70e>>
+ * @generated SignedSource<<0e557fa7ee6e378d391619c36fa70246>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -140,12 +140,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8c632fd372adc6577e94662c5ded904e",
+    "cacheID": "389f3ec4762e73ffc20a3fbd3dfdbf57",
     "id": null,
     "metadata": {},
     "name": "NewsfeedQuery",
     "operationKind": "query",
-    "text": "query NewsfeedQuery {\n  templates {\n    edges {\n      node {\n        name\n        id\n        type\n      }\n    }\n  }\n  workflow {\n    ...WorkflowFragment\n  }\n}\n\nfragment WorkflowFragment on Workflow {\n  ...WorkflowInnerFragment\n}\n\nfragment WorkflowInnerFragment on Workflow {\n  id\n  name\n  type\n}\n"
+    "text": "query NewsfeedQuery {\n  templates {\n    edges {\n      node {\n        name\n        id\n        type\n      }\n    }\n  }\n  workflow {\n    ...WorkflowFragment\n  }\n}\n\nfragment WorkflowFragment on Workflow {\n  ...WorkflowInnerFragment\n  ...WorkflowOuterFragment\n}\n\nfragment WorkflowInnerFragment on Workflow {\n  id\n  name\n  type\n}\n\nfragment WorkflowOuterFragment on Workflow {\n  type\n}\n"
   }
 };
 })();
