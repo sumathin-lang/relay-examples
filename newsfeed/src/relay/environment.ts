@@ -164,9 +164,9 @@ const resolvers = {
   },
   workflow: () => {
     return {
-      id: "1",
-      name: "Workflow 1",
-      type: "Type 1",
+      id: "99",
+      name: "Workflow ROOT",
+      type: "Type ROOT",
       properties: {
         displayName: "Workflow ROOT PROP",
       },
