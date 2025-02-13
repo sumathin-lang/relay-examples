@@ -5,8 +5,6 @@ import { useFragment } from "react-relay";
 import type { ParentFragment$key } from "./__generated__/ParentFragment.graphql";
 import { ChildOne } from "./ChildOne";
 import { ChildTwo } from "./ChildTwo";
-// import { WorkflowInner } from "./WorkflowInner";
-// import { WorkflowOuter } from "./WorkflowOuter";
 
 type Props = {
   parent: ParentFragment$key;
