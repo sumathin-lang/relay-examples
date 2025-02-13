@@ -20,6 +20,7 @@ type Query {
   myGreeting: String!
   person: IPerson!
   templates: TemplateConnection
+  workflow: Workflow
 }
 
 type Template {

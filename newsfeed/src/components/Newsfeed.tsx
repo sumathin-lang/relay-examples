@@ -28,6 +28,9 @@ const NewsfeedQuery = graphql`
         }
       }
     }
+    workflow {
+      ...WorkflowFragment
+    }
 
     # user(id: $userId) {
     #   id
@@ -41,14 +44,17 @@ export default function Newsfeed() {
   const templates = data.templates.edges;
   // As before:
   return (
-    <div className="newsfeed">
-      {templates.map((template) => (
-        <>
-          <div key={template.node.id}>{template.node.name}</div>
-          <Workflow workflow={template.node.workflow} />
-        </>
-      ))}
-    </div>
+    <>
+      <div className="newsfeed">
+        {templates.map((template) => (
+          <>
+            <div key={template.node.id}>{template.node.name}</div>
+            <Workflow workflow={template.node.workflow} />
+          </>
+        ))}
+      </div>
+      <Workflow workflow={data.workflow} />
+    </>
   );
 }
 

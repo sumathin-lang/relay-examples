@@ -79,6 +79,7 @@ type Group {
 type Query {
   myGreeting: String!
   templates: TemplateConnection
+  workflow: Workflow
 }
 
 type Template {
@@ -159,6 +160,13 @@ const resolvers = {
       "2": { id: "2", name: "Jane Smith" },
     };
     return users[id] || null;
+  },
+  workflow: () => {
+    return {
+      id: "1",
+      name: "Workflow 1",
+      type: "Type 1",
+    };
   },
   templates: () => {
     return {
