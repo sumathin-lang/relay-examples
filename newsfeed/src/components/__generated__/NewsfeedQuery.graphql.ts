@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fad31d551135e58221830945da49a0da>>
+ * @generated SignedSource<<6ed0877ebfc6810128208a25a3a2379f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,7 +19,31 @@ export type NewsfeedQuery = {
   variables: NewsfeedQuery$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = [
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "id",
+    "storageKey": null
+  },
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "name",
+    "storageKey": null
+  },
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "type",
+    "storageKey": null
+  }
+];
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -71,29 +95,7 @@ const node: ConcreteRequest = {
                 "kind": "LinkedField",
                 "name": "node",
                 "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "id",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "name",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "type",
-                    "storageKey": null
-                  }
-                ],
+                "selections": (v0/*: any*/),
                 "storageKey": null
               }
             ],
@@ -101,18 +103,29 @@ const node: ConcreteRequest = {
           }
         ],
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "Workflow",
+        "kind": "LinkedField",
+        "name": "workflow",
+        "plural": false,
+        "selections": (v0/*: any*/),
+        "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "8df11e54c9de7eb8a0e7b9faaf2baed7",
+    "cacheID": "27de79925fd635979969e60d24945180",
     "id": null,
     "metadata": {},
     "name": "NewsfeedQuery",
     "operationKind": "query",
-    "text": "query NewsfeedQuery {\n  ...ParentFragment\n}\n\nfragment ChildOneFragment on Query {\n  templates {\n    edges {\n      node {\n        id\n        name\n        type\n      }\n    }\n  }\n}\n\nfragment ParentFragment on Query {\n  myGreeting\n  ...ChildOneFragment\n}\n"
+    "text": "query NewsfeedQuery {\n  ...ParentFragment\n}\n\nfragment ChildOneFragment on Query {\n  templates {\n    edges {\n      node {\n        id\n        name\n        type\n      }\n    }\n  }\n}\n\nfragment ChildTwoFragment on Query {\n  workflow {\n    id\n    name\n    type\n  }\n}\n\nfragment ParentFragment on Query {\n  myGreeting\n  ...ChildOneFragment\n  ...ChildTwoFragment\n}\n"
   }
 };
+})();
 
 (node as any).hash = "7638e880e6fedebce013163e59bb1d2c";
 

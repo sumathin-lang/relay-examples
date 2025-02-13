@@ -4,6 +4,7 @@ import { useFragment } from "react-relay";
 
 import type { ParentFragment$key } from "./__generated__/ParentFragment.graphql";
 import { ChildOne } from "./ChildOne";
+import { ChildTwo } from "./ChildTwo";
 // import { WorkflowInner } from "./WorkflowInner";
 // import { WorkflowOuter } from "./WorkflowOuter";
 
@@ -15,18 +16,18 @@ export const ParentFragment = graphql`
   fragment ParentFragment on Query {
     myGreeting
     ...ChildOneFragment
+    ...ChildTwoFragment
   }
 `;
 
 export const Parent = ({ parent }: Props) => {
   const data = useFragment(ParentFragment, parent);
 
-  // return <div className="workflow">{data.myGreeting}</div>;
   return (
     <>
-      <div className="workflow">{data.myGreeting}</div>;
+      <div>{data.myGreeting}</div>;
       <ChildOne childOne={data} />
-      {/* <WorkflowOuter workflowOuter={data} /> */}
+      <ChildTwo childTwo={data} />
     </>
   );
 };

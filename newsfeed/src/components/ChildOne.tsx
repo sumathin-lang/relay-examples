@@ -3,8 +3,6 @@ import { graphql } from "relay-runtime";
 import { useFragment } from "react-relay";
 
 import type { ChildOneFragment$key } from "./__generated__/ChildOneFragment.graphql";
-// import { WorkflowInner } from "./WorkflowInner";
-// import { WorkflowOuter } from "./WorkflowOuter";
 
 type Props = {
   childOne: ChildOneFragment$key;
@@ -28,7 +26,7 @@ export const ChildOne = ({ childOne }: Props) => {
   const data = useFragment(ChildOneFragment, childOne);
   const templates = data.templates.edges;
   return (
-    <div className="newsfeed">
+    <div>
       {templates.map((template) => (
         <>
           <div key={template.node.id}>{template.node.name}</div>
