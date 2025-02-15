@@ -16,8 +16,9 @@ import type {
   Variables,
 } from "relay-runtime";
 
-import { graphql, buildSchema } from "graphql";
+import { graphql, buildSchema, buildASTSchema } from "graphql";
 import LiveResolverStore from "relay-runtime/lib/store/live-resolvers/LiveResolverStore";
+import { typeDefs } from "../myschema/typeDefs.generated";
 // import { getSchema } from "../../schema";
 
 RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
@@ -237,7 +238,7 @@ export function createEnvironment(): IEnvironment {
       async (operations: RequestParameters, variables: Variables) => {
         try {
           const result = await graphql({
-            schema,
+            schema: buildASTSchema(typeDefs),
             // schema: getSchema(),
             source: operations.text,
             rootValue: resolvers,

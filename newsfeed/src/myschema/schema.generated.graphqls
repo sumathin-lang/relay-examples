@@ -1,8 +1,70 @@
-type Book {
-  author: String
-  title: String
+type Group {
+  description: String!
+  name: String!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
 }
 
 type Query {
-  bookInfo: Book
+  myGreeting: String!
+  templates: TemplateConnection
+  workflow: Workflow
+}
+
+type Template {
+  id: String
+  name: String
+  type: String
+  workflow: Workflow
+}
+
+type TemplateConnection {
+  edges: [TemplateEdge]
+  pageInfo: PageInfo
+}
+
+type TemplateEdge {
+  cursor: String
+  node: Template
+}
+
+type TemplateProperties {
+  categoryNames: [String!]
+  description: String
+  displayName: String
+  galleryName: String
+  instantiationMessage: String
+  name: String
+  publishedTime: String
+  summary: String
+}
+
+type Workflow {
+  id: String
+  name: String
+  properties: WorkflowProperties
+  type: String
+}
+
+type WorkflowProperties {
+  apiId: String
+  createdTime: String
+  displayName: String
+  flowFailureAlertSubscribed: Boolean
+  flowSuspensionReason: String
+  flowSuspensionReasonDetails: String
+  flowSuspensionTime: String
+  isManaged: Boolean
+  lastModifiedTime: String
+  plan: String
+  provisioningMethod: String
+  sharingType: String
+  state: String
+  templateName: String
+  userType: String
 }
