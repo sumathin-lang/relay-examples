@@ -1,8 +1,8 @@
 import type {
-  QueryResolvers,
-  WorkflowResolvers,
-} from "./../../src/myschema/types.generated";
-export const workflow: NonNullable<QueryResolvers["workflow"]> = async (
+  Query,
+  Workflow,
+} from "./../../src/supermassive/resolvers.interface";
+export const workflow: NonNullable<Query.Resolvers["workflow"]> = async (
   parent,
   arg,
   ctx
@@ -19,7 +19,7 @@ export const workflow: NonNullable<QueryResolvers["workflow"]> = async (
   };
 };
 
-export const Workflow: WorkflowResolvers = {
+export const WorkflowResolver: Workflow.Resolvers = {
   id: () => {
     console.log("Workflow.id in field resolver");
     return "99";

@@ -24,8 +24,12 @@ import LiveResolverStore from "relay-runtime/lib/store/live-resolvers/LiveResolv
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { templates } from "../../resolvers/Query/templates";
 import { myGreeting } from "../../resolvers/Query/myGreeting";
-import { Workflow, workflow } from "../../resolvers/Query/workflow";
-import { Resolvers } from "../myschema/types.generated";
+import {
+  Workflow,
+  workflow,
+  WorkflowResolver,
+} from "../../resolvers/Query/workflow";
+// import { Resolvers } from "../myschema/types.generated";
 import typeDefs from "../../schema.graphql";
 
 RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
@@ -238,7 +242,7 @@ const resolvers: Resolvers = {
     templates,
     myGreeting,
   },
-  Workflow,
+  Workflow: WorkflowResolver,
 };
 
 let environment: IEnvironment; // = createEnvironment();

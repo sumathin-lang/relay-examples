@@ -1,5 +1,5 @@
-import type { QueryResolvers } from "./../../src/myschema/types.generated";
-export const myGreeting: NonNullable<QueryResolvers['myGreeting']> = async (
+import type { Query } from "./../../src/supermassive/resolvers.interface";
+export const myGreeting: NonNullable<Query.Resolvers["myGreeting"]> = async (
   _parent,
   _arg,
   _ctx
