@@ -23,6 +23,10 @@ module.exports = {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      {
+        test: /\.graphql$/,
+        loader: "@graphql-tools/webpack-loader",
+      },
     ],
   },
   resolve: {

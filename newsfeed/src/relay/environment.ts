@@ -18,7 +18,7 @@ import type {
 
 import { graphql, buildSchema, buildASTSchema } from "graphql";
 import LiveResolverStore from "relay-runtime/lib/store/live-resolvers/LiveResolverStore";
-import { typeDefs } from "../myschema/typeDefs.generated";
+// import { typeDefs } from "../myschema/typeDefs.generated";
 // import { resolvers } from "../myschema/resolvers.generated";
 // import { getSchema } from "../../schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
@@ -26,6 +26,7 @@ import { templates } from "../../resolvers/Query/templates";
 import { myGreeting } from "../../resolvers/Query/myGreeting";
 import { Workflow, workflow } from "../../resolvers/Query/workflow";
 import { Resolvers } from "../myschema/types.generated";
+import typeDefs from "../../schema.graphql";
 
 RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
 

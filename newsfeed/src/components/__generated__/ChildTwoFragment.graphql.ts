@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c4f3a2f61fb08072b1ab26b31485af13>>
+ * @generated SignedSource<<15bd9bdaf11253aae7b6e6f7b2d139fe>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,8 +12,8 @@ import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ChildTwoFragment$data = {
   readonly workflow: {
-    readonly id: string | null;
-    readonly name: string | null;
+    readonly id: string;
+    readonly name: string;
     readonly type: string | null;
   } | null;
   readonly " $fragmentType": "ChildTwoFragment";

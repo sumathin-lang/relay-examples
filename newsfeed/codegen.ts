@@ -23,6 +23,7 @@ const config: CodegenConfig = {
         union: "", // Empty string disables all file generation of relevant type in every module
         interface: "*",
       },
+      resolverTypesPath: "./src/myschema/types.generated.ts",
     }),
   },
 };

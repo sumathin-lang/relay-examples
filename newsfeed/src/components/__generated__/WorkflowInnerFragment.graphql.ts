@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<979877216e35709497520dff6fcfb987>>
+ * @generated SignedSource<<1d068c6e6a590540ccda4078b313dce8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,8 +11,8 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type WorkflowInnerFragment$data = {
-  readonly id: string | null;
-  readonly name: string | null;
+  readonly id: string;
+  readonly name: string;
   readonly type: string | null;
   readonly " $fragmentType": "WorkflowInnerFragment";
 };

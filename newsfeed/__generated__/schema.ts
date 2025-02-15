@@ -1,0 +1,12 @@
+import { GraphQLList, GraphQLNonNull, GraphQLID, GraphQLString, GraphQLInt, GraphQLFloat, GraphQLBoolean } from "graphql";
+import { Resolvers, ObjectTypeResolver } from "@graphitation/supermassive";
+const Group: ObjectTypeResolver = {};
+const Query: ObjectTypeResolver = {};
+const Template: ObjectTypeResolver = {};
+const TemplateConnection: ObjectTypeResolver = {};
+const TemplateEdge: ObjectTypeResolver = {};
+const PageInfo: ObjectTypeResolver = {};
+const Workflow: ObjectTypeResolver = {};
+const TemplateProperties: ObjectTypeResolver = {};
+const WorkflowProperties: ObjectTypeResolver = {};
+export const resolvers: Resolvers = { Group, Query, Template, TemplateConnection, TemplateEdge, PageInfo, Workflow, TemplateProperties, WorkflowProperties };

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<89c8deb4ba033f82703fe32033ef02b9>>
+ * @generated SignedSource<<fc14fb60db67d72f06aca4129ea383e1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,12 +19,12 @@ export type NewsfeedQuery$data = {
         readonly name: string | null;
         readonly type: string | null;
         readonly workflow: {
-          readonly id: string | null;
-          readonly name: string | null;
+          readonly id: string;
+          readonly name: string;
           readonly properties: {
             readonly displayName: string | null;
           } | null;
-        } | null;
+        };
       } | null;
     } | null> | null;
   } | null;
