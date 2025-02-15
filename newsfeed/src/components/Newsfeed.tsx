@@ -17,18 +17,18 @@ import { Parent } from "./Parent";
 
 // const NewsfeedQuery = graphql`
 //   query NewsfeedQuery {
-//     templates {
-//       edges {
-//         node {
-//           name
-//           id
-//           type
-//           # workflow {
-//           #   ...WorkflowFragment
-//           # }
-//         }
-//       }
+// templates {
+//   edges {
+//     node {
+//       name
+//       id
+//       type
+//       # workflow {
+//       #   ...WorkflowFragment
+//       # }
 //     }
+//   }
+// }
 
 //     workflow {
 //       ...WorkflowFragment
@@ -39,27 +39,41 @@ import { Parent } from "./Parent";
 const NewsfeedQuery = graphql`
   query NewsfeedQuery {
     ...ParentFragment
+    templates {
+      edges {
+        node {
+          name
+          id
+          type
+          workflow {
+            id
+            properties {
+              displayName
+            }
+            name
+          }
+        }
+      }
+    }
   }
 `;
 
 export default function Newsfeed() {
   const data = useLazyLoadQuery<NewsfeedQueryType>(NewsfeedQuery, {});
-  // const templates = data.templates.edges;
-  // As before:
+
+  const templates = data.templates.edges;
+  console.log("templates", templates);
   return (
-    // <>
-    //   <div className="newsfeed">
-    //     {templates.map((template) => (
-    //       <>
-    //         <div key={template.node.id}>{template.node.name}</div>
-    //         {/* <Workflow workflow={template.node.workflow} /> */}
-    //       </>
-    //     ))}
-    //   </div>
-    //   <Workflow workflow={data.workflow} />
-    // </>
     <>
       <Parent parent={data} />
+      <div className="newsfeed">
+        {templates.map((template) => (
+          <div key={template.node.id}>
+            <h1>{template.node.name}</h1>
+            <h2>{template.node.type}</h2>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

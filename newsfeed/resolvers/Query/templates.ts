@@ -13,6 +13,7 @@ export const templates: NonNullable<QueryResolvers['templates']> = async (
           name: "Han Solo",
           id: "1",
           workflow: {
+            id: "12",
             name: "Workflow 1",
             type: "Type 1",
             properties: {
@@ -27,6 +28,7 @@ export const templates: NonNullable<QueryResolvers['templates']> = async (
           name: "Leia Organa",
           id: "2",
           workflow: {
+            id: "22",
             name: "Workflow 2",
             type: "Type 2",
             properties: {

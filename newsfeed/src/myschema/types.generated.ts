@@ -41,7 +41,7 @@ export type Template = {
   id?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
-  workflow?: Maybe<Workflow>;
+  workflow: Workflow;
 };
 
 export type TemplateConnection = {
@@ -70,8 +70,8 @@ export type TemplateProperties = {
 
 export type Workflow = {
   __typename?: 'Workflow';
-  id?: Maybe<Scalars['String']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
   properties?: Maybe<WorkflowProperties>;
   type?: Maybe<Scalars['String']['output']>;
 };
@@ -218,7 +218,7 @@ export type TemplateResolvers<ContextType = any, ParentType extends ResolversPar
   id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   type?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  workflow?: Resolver<Maybe<ResolversTypes['Workflow']>, ParentType, ContextType>;
+  workflow?: Resolver<ResolversTypes['Workflow'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -247,8 +247,8 @@ export type TemplatePropertiesResolvers<ContextType = any, ParentType extends Re
 };
 
 export type WorkflowResolvers<ContextType = any, ParentType extends ResolversParentTypes['Workflow'] = ResolversParentTypes['Workflow']> = {
-  id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   properties?: Resolver<Maybe<ResolversTypes['WorkflowProperties']>, ParentType, ContextType>;
   type?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;

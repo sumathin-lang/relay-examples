@@ -20,7 +20,7 @@ type Template {
   id: String
   name: String
   type: String
-  workflow: Workflow
+  workflow: Workflow!
 }
 
 type TemplateConnection {
@@ -45,8 +45,8 @@ type TemplateProperties {
 }
 
 type Workflow {
-  id: String
-  name: String
+  id: String!
+  name: String!
   properties: WorkflowProperties
   type: String
 }
