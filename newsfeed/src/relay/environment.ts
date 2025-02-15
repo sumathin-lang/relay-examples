@@ -19,7 +19,9 @@ import type {
 import { graphql, buildSchema, buildASTSchema } from "graphql";
 import LiveResolverStore from "relay-runtime/lib/store/live-resolvers/LiveResolverStore";
 import { typeDefs } from "../myschema/typeDefs.generated";
+import { resolvers } from "../myschema/resolvers.generated";
 // import { getSchema } from "../../schema";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 
 RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
 
@@ -154,65 +156,65 @@ type WorkflowProperties {
   userType: String
 }`);
 // 2. Create a resolver function
-const resolvers = {
-  myGreeting: () => "Hello from GraphQL!",
-  user: ({ id }: any) => {
-    const users = {
-      "1": { id: "1", name: "John Doe" },
-      "2": { id: "2", name: "Jane Smith" },
-    };
-    return users[id] || null;
-  },
-  workflow: () => {
-    return {
-      id: "99",
-      name: "Workflow ROOT",
-      type: "Type ROOT",
-      properties: {
-        displayName: "Workflow ROOT PROP",
-      },
-    };
-  },
-  templates: () => {
-    return {
-      totalCount: 3,
-      edges: [
-        {
-          node: {
-            name: "Han Solo",
-            id: "1",
-            workflow: {
-              name: "Workflow 1",
-              type: "Type 1",
-              properties: {
-                displayName: "Workflow PROP1",
-              },
-            },
-          },
-          cursor: "Y3Vyc29yMg==",
-        },
-        {
-          node: {
-            name: "Leia Organa",
-            id: "2",
-            workflow: {
-              name: "Workflow 2",
-              type: "Type 2",
-              properties: {
-                displayName: "Workflow PROP2",
-              },
-            },
-          },
-          cursor: "Y3Vyc29yMw==",
-        },
-      ],
-      pageInfo: {
-        endCursor: "Y3Vyc29yMw==",
-        hasNextPage: false,
-      },
-    };
-  },
-};
+// const resolvers = {
+//   myGreeting: () => "Hello from GraphQL!",
+//   user: ({ id }: any) => {
+//     const users = {
+//       "1": { id: "1", name: "John Doe" },
+//       "2": { id: "2", name: "Jane Smith" },
+//     };
+//     return users[id] || null;
+//   },
+//   workflow: () => {
+//     return {
+//       id: "99",
+//       name: "Workflow ROOT",
+//       type: "Type ROOT",
+//       properties: {
+//         displayName: "Workflow ROOT PROP",
+//       },
+//     };
+//   },
+//   templates: () => {
+//     return {
+//       totalCount: 3,
+//       edges: [
+//         {
+//           node: {
+//             name: "Han Solo",
+//             id: "1",
+//             workflow: {
+//               name: "Workflow 1",
+//               type: "Type 1",
+//               properties: {
+//                 displayName: "Workflow PROP1",
+//               },
+//             },
+//           },
+//           cursor: "Y3Vyc29yMg==",
+//         },
+//         {
+//           node: {
+//             name: "Leia Organa",
+//             id: "2",
+//             workflow: {
+//               name: "Workflow 2",
+//               type: "Type 2",
+//               properties: {
+//                 displayName: "Workflow PROP2",
+//               },
+//             },
+//           },
+//           cursor: "Y3Vyc29yMw==",
+//         },
+//       ],
+//       pageInfo: {
+//         endCursor: "Y3Vyc29yMw==",
+//         hasNextPage: false,
+//       },
+//     };
+//   },
+// };
 
 // // 3. Define your GraphQL query
 // const query = `
@@ -237,11 +239,12 @@ export function createEnvironment(): IEnvironment {
     network: Network.create(
       async (operations: RequestParameters, variables: Variables) => {
         try {
+          const builtSchema = makeExecutableSchema({ typeDefs, resolvers });
           const result = await graphql({
-            schema: buildASTSchema(typeDefs),
+            schema: builtSchema,
             // schema: getSchema(),
             source: operations.text,
-            rootValue: resolvers,
+            // rootValue: resolvers,
             variableValues: variables,
           });
           return result;
