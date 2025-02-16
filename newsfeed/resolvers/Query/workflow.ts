@@ -1,8 +1,19 @@
+import { PromiseOrValue } from "graphql/jsutils/PromiseOrValue";
 import type {
   Query,
-  Workflow,
+  Workflow as WorkflowType,
 } from "./../../src/supermassive/resolvers.interface";
-export const workflow: NonNullable<Query.Resolvers["workflow"]> = async (
+import type { Workflow } from "../../src/supermassive/models.interface";
+
+type TEMPRESOLVERTYPE = (
+  model: unknown,
+  args: {},
+  context: unknown,
+  info: unknown
+) => PromiseOrValue<Workflow>;
+
+export const workflow: TEMPRESOLVERTYPE = async (
+  //NonNullable<Query.Resolvers["workflow"]> = async (
   parent,
   arg,
   ctx
@@ -10,7 +21,7 @@ export const workflow: NonNullable<Query.Resolvers["workflow"]> = async (
   /* Implement Query.workflow resolver logic here */
   console.log("Query.workflow resolver logic here", parent, arg, ctx);
   return {
-    id: "100",
+    myid: 100,
     name: "Workflow 100",
     type: "Type 100",
     properties: {
@@ -19,10 +30,11 @@ export const workflow: NonNullable<Query.Resolvers["workflow"]> = async (
   };
 };
 
-export const WorkflowResolver: Workflow.Resolvers = {
-  id: () => {
+export const WorkflowResolver: WorkflowType.Resolvers = {
+  id: (parent) => {
     console.log("Workflow.id in field resolver");
-    return "99";
+
+    return parent.myid;
   },
   name: () => {
     console.log("Workflow.name in field resolver");

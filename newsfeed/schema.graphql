@@ -1,3 +1,5 @@
+directive @model(from: String, tsType: String!) repeatable on OBJECT | SCALAR
+
 type Group {
   description: String!
   name: String!
@@ -5,7 +7,7 @@ type Group {
 
 type Query {
   myGreeting: String!
-  templates: TemplateConnection
+  templates: TemplateConnection!
   workflow: Workflow
 }
 
@@ -18,13 +20,13 @@ type Template {
 }
 
 type TemplateConnection {
-  edges: [TemplateEdge]
-  pageInfo: PageInfo
+  edges: [TemplateEdge!]!
+  pageInfo: PageInfo!
 }
 
 type TemplateEdge {
   cursor: String
-  node: Template
+  node: Template!
 }
 
 type PageInfo {
@@ -34,7 +36,7 @@ type PageInfo {
   startCursor: String
 }
 
-type Workflow {
+type Workflow @model(from: "./src/models", tsType: "WorkflowModel") {
   id: String!
   name: String!
   type: String

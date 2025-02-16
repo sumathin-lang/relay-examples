@@ -18,7 +18,7 @@ export declare namespace Query {
         readonly workflow?: workflow;
     }
     export type myGreeting = (model: unknown, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<string>;
-    export type templates = (model: unknown, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<Models.TemplateConnection | null | undefined>;
+    export type templates = (model: unknown, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<Models.TemplateConnection>;
     export type workflow = (model: unknown, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<Models.Workflow | null | undefined>;
 }
 export declare namespace Template {
@@ -38,8 +38,8 @@ export declare namespace TemplateConnection {
         readonly edges?: edges;
         readonly pageInfo?: pageInfo;
     }
-    export type edges = (model: Models.TemplateConnection, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<ReadonlyArray<Models.TemplateEdge | null | undefined> | null | undefined>;
-    export type pageInfo = (model: Models.TemplateConnection, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<Models.PageInfo | null | undefined>;
+    export type edges = (model: Models.TemplateConnection, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<ReadonlyArray<Models.TemplateEdge>>;
+    export type pageInfo = (model: Models.TemplateConnection, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<Models.PageInfo>;
 }
 export declare namespace TemplateEdge {
     export interface Resolvers {
@@ -47,7 +47,7 @@ export declare namespace TemplateEdge {
         readonly node?: node;
     }
     export type cursor = (model: Models.TemplateEdge, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<string | null | undefined>;
-    export type node = (model: Models.TemplateEdge, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<Models.Template | null | undefined>;
+    export type node = (model: Models.TemplateEdge, args: {}, context: unknown, info: ResolveInfo) => PromiseOrValue<Models.Template>;
 }
 export declare namespace PageInfo {
     export interface Resolvers {

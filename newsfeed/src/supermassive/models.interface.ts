@@ -1,5 +1,6 @@
 /* eslint-disable */ 
 // This file was automatically generated (by @graphitation/supermassive) and should not be edited.
+import type { WorkflowModel as _Workflow } from "../models";
 // Base type for all models. Enables automatic resolution of abstract GraphQL types (interfaces, unions)
 export interface BaseModel {
     readonly __typename?: string;
@@ -18,13 +19,13 @@ export interface Template extends BaseModel {
 }
 export interface TemplateConnection extends BaseModel {
     readonly __typename?: "TemplateConnection";
-    readonly edges?: ReadonlyArray<TemplateEdge | null> | null;
-    readonly pageInfo?: PageInfo | null;
+    readonly edges: ReadonlyArray<TemplateEdge>;
+    readonly pageInfo: PageInfo;
 }
 export interface TemplateEdge extends BaseModel {
     readonly __typename?: "TemplateEdge";
     readonly cursor?: string | null;
-    readonly node?: Template | null;
+    readonly node: Template;
 }
 export interface PageInfo extends BaseModel {
     readonly __typename?: "PageInfo";
@@ -33,12 +34,8 @@ export interface PageInfo extends BaseModel {
     readonly hasPreviousPage?: boolean | null;
     readonly startCursor?: string | null;
 }
-export interface Workflow extends BaseModel {
+export interface Workflow extends BaseModel, _Workflow {
     readonly __typename?: "Workflow";
-    readonly id: string;
-    readonly name: string;
-    readonly type?: string | null;
-    readonly properties?: WorkflowProperties | null;
 }
 export interface TemplateProperties extends BaseModel {
     readonly __typename?: "TemplateProperties";

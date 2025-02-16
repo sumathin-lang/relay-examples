@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9fa5d0c070db27adbc15b4916252b46d>>
+ * @generated SignedSource<<823d29109b3bb7f4cb30fd8c3ccb286c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,9 +17,9 @@ export type ChildOneFragment$data = {
         readonly id: string | null;
         readonly name: string | null;
         readonly type: string | null;
-      } | null;
-    } | null> | null;
-  } | null;
+      };
+    }>;
+  };
   readonly " $fragmentType": "ChildOneFragment";
 };
 export type ChildOneFragment$key = {

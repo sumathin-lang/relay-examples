@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<fc14fb60db67d72f06aca4129ea383e1>>
+ * @generated SignedSource<<8cdb52598b5e035ee9bbf69614f8c83a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,9 +25,9 @@ export type NewsfeedQuery$data = {
             readonly displayName: string | null;
           } | null;
         };
-      } | null;
-    } | null> | null;
-  } | null;
+      };
+    }>;
+  };
   readonly " $fragmentSpreads": FragmentRefs<"ParentFragment">;
 };
 export type NewsfeedQuery = {
