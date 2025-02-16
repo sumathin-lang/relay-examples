@@ -1,36 +1,7 @@
 import type { Query } from "../../supermassive/resolvers.interface";
-export const templates: Query.Resolvers["templates"] = () => {
+export const templates: Query.Resolvers["templates"] = (parent, arg, ctx) => {
   return {
-    edges: [
-      {
-        node: {
-          name: "Han Solo",
-          id: "1",
-          workflow: {
-            myid: 12,
-            name: "Workflow 1",
-            type: "Type 1",
-            properties: {
-              displayName: "Workflow PROP1",
-            },
-          },
-        },
-      },
-      {
-        node: {
-          name: "Leia Organa",
-          id: "2",
-          workflow: {
-            myid: 22,
-            name: "Workflow 2",
-            type: "Type 2",
-            properties: {
-              displayName: "Workflow PROP2",
-            },
-          },
-        },
-      },
-    ],
+    edges: ctx.getAllTemplates.loadMany([1, 2]),
     pageInfo: {
       endCursor: "Y3Vyc29yMw==",
       hasNextPage: false,

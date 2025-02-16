@@ -27,6 +27,7 @@ import { myGreeting } from "../resolvers/Query/myGreeting";
 import { workflow, WorkflowResolver } from "../resolvers/Query/workflow";
 // import { Resolvers } from "../myschema/types.generated";
 import typeDefs from "../../schema.graphql";
+import * as DataLoader from "dataloader";
 
 RelayFeatureFlags.ENABLE_RELAY_RESOLVERS = true;
 
@@ -232,7 +233,8 @@ type WorkflowProperties {
 //   }
 // `;
 
-const resolvers: Resolvers = {
+// FIX THE TYPE OF THE RESOLVERS
+const resolvers = {
   Query: {
     workflow,
     templates,
@@ -242,6 +244,51 @@ const resolvers: Resolvers = {
 };
 
 let environment: IEnvironment; // = createEnvironment();
+
+const getTemplateById = async (id: number) => {
+  console.log("getAppById", id);
+  return { id, name: "app" + id, url: "http://localhost:3000" };
+};
+
+const loaders = (): any => ({
+  getTeamplateByIndex: new DataLoader((ids) => {
+    console.log("DataLoader IDs", ids);
+    return Promise.all(ids.map((id) => getTemplateById(Number(id))));
+  }),
+  getAllTemplates: new DataLoader(async () => {
+    console.log("DataLoader AllApps");
+    return [
+      {
+        node: {
+          name: "Han Solo",
+          id: "1",
+          workflow: {
+            myid: 12,
+            name: "Workflow 1",
+            type: "Type 1",
+            properties: {
+              displayName: "Workflow PROP1",
+            },
+          },
+        },
+      },
+      {
+        node: {
+          name: "Leia Organa",
+          id: "2",
+          workflow: {
+            myid: 22,
+            name: "Workflow 2",
+            type: "Type 2",
+            properties: {
+              displayName: "Workflow PROP2",
+            },
+          },
+        },
+      },
+    ];
+  }),
+});
 
 export function createEnvironment(): IEnvironment {
   if (environment) {
@@ -260,6 +307,7 @@ export function createEnvironment(): IEnvironment {
             source: operations.text,
             // rootValue: resolvers,
             variableValues: variables,
+            contextValue: loaders(),
           });
           return result;
         } catch (error) {
