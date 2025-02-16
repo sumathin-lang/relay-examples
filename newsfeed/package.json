@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@graphitation/cli": "^1.16.0",
+    "@graphitation/supermassive": "^3.8.3",
     "@graphql-tools/schema": "^10.0.18",
     "graphiql": "^2.2.0",
     "graphql": "^16.10.0",
