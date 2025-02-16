@@ -31,11 +31,13 @@ export const WorkflowResolver: WorkflowType.Resolvers = {
     return parent.myid.toString();
   },
   name: async (parent, arg, ctx) => {
-    const wfObj = await ctx.getWorkflowByIndex.load(parent.myid);
+    console.log("Workflow.name in field resolver", parent.myid);
+    const wfObj = await ctx.getWorkflowByIndex.load(999);
     console.log("Workflow.name in field resolver", wfObj);
     return wfObj.name;
   },
   type: async (parent, arg, ctx) => {
+    console.log("Workflow.type in field resolver", parent.myid);
     const wfObj = await ctx.getWorkflowByIndex.load(parent.myid);
     console.log("Workflow.type in field resolver", wfObj);
     return wfObj.type;
