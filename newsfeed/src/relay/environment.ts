@@ -250,13 +250,18 @@ const getTemplateById = async (id: number) => {
   return { id, name: "app" + id, url: "http://localhost:3000" };
 };
 
+const getWorkflowById = async (id: number) => {
+  console.log("getWorkflowById", id);
+  return { id, name: "workflow" + id, type: "CUSTOM-WF" + id.toString() };
+};
+
 const loaders = (): any => ({
   getTeamplateByIndex: new DataLoader((ids) => {
     console.log("DataLoader IDs", ids);
     return Promise.all(ids.map((id) => getTemplateById(Number(id))));
   }),
   getAllTemplates: new DataLoader(async () => {
-    console.log("DataLoader AllApps");
+    console.log("DataLoader getAllTemplates");
     return [
       {
         node: {
@@ -287,6 +292,10 @@ const loaders = (): any => ({
         },
       },
     ];
+  }),
+  getWorkflowByIndex: new DataLoader((ids) => {
+    console.log("getWorkflowByIndex IDs", ids);
+    return Promise.all(ids.map((id) => getWorkflowById(Number(id))));
   }),
 });
 

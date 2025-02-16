@@ -26,17 +26,19 @@ export const workflow: TEMPRESOLVERTYPE2 = async (
 
 export const WorkflowResolver: WorkflowType.Resolvers = {
   id: (parent) => {
-    console.log("Workflow.id in field resolver");
+    console.log("Workflow.id in field resolver", parent.myid.toString());
 
-    return parent.myid;
+    return parent.myid.toString();
   },
-  name: () => {
-    console.log("Workflow.name in field resolver");
-    return "Workflow ROOT";
+  name: async (parent, arg, ctx) => {
+    const wfObj = await ctx.getWorkflowByIndex.load(parent.myid);
+    console.log("Workflow.name in field resolver", wfObj);
+    return wfObj.name;
   },
-  type: () => {
-    console.log("Workflow.type in field resolver");
-    return "Type ROOT";
+  type: async (parent, arg, ctx) => {
+    const wfObj = await ctx.getWorkflowByIndex.load(parent.myid);
+    console.log("Workflow.type in field resolver", wfObj);
+    return wfObj.type;
   },
   properties: () => {
     console.log("Workflow.props in field resolver");

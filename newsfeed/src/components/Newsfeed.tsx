@@ -38,7 +38,6 @@ import { Parent } from "./Parent";
 
 const NewsfeedQuery = graphql`
   query NewsfeedQuery {
-    ...ParentFragment
     templates {
       edges {
         node {
@@ -51,6 +50,7 @@ const NewsfeedQuery = graphql`
               displayName
             }
             name
+            type
           }
         }
       }
@@ -65,7 +65,7 @@ export default function Newsfeed() {
   console.log("templates", templates);
   return (
     <>
-      <Parent parent={data} />
+      {/* <Parent parent={data} /> */}
       <div className="newsfeed">
         {templates.map((template) => (
           <div key={template.node.id}>

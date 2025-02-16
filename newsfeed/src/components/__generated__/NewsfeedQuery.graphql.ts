@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8cdb52598b5e035ee9bbf69614f8c83a>>
+ * @generated SignedSource<<1c8cf4ea8e4f8bc8c2faeb1262aa9c27>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,6 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-import { FragmentRefs } from "relay-runtime";
 export type NewsfeedQuery$variables = {};
 export type NewsfeedQuery$data = {
   readonly templates: {
@@ -24,11 +23,11 @@ export type NewsfeedQuery$data = {
           readonly properties: {
             readonly displayName: string | null;
           } | null;
+          readonly type: string | null;
         };
       };
     }>;
   };
-  readonly " $fragmentSpreads": FragmentRefs<"ParentFragment">;
 };
 export type NewsfeedQuery = {
   response: NewsfeedQuery$data;
@@ -57,77 +56,63 @@ v2 = {
   "name": "type",
   "storageKey": null
 },
-v3 = {
-  "alias": null,
-  "args": null,
-  "concreteType": "Workflow",
-  "kind": "LinkedField",
-  "name": "workflow",
-  "plural": false,
-  "selections": [
-    (v1/*: any*/),
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "WorkflowProperties",
-      "kind": "LinkedField",
-      "name": "properties",
-      "plural": false,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "displayName",
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    },
-    (v0/*: any*/)
-  ],
-  "storageKey": null
-};
-return {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "NewsfeedQuery",
+v3 = [
+  {
+    "alias": null,
+    "args": null,
+    "concreteType": "TemplateConnection",
+    "kind": "LinkedField",
+    "name": "templates",
+    "plural": false,
     "selections": [
-      {
-        "args": null,
-        "kind": "FragmentSpread",
-        "name": "ParentFragment"
-      },
       {
         "alias": null,
         "args": null,
-        "concreteType": "TemplateConnection",
+        "concreteType": "TemplateEdge",
         "kind": "LinkedField",
-        "name": "templates",
-        "plural": false,
+        "name": "edges",
+        "plural": true,
         "selections": [
           {
             "alias": null,
             "args": null,
-            "concreteType": "TemplateEdge",
+            "concreteType": "Template",
             "kind": "LinkedField",
-            "name": "edges",
-            "plural": true,
+            "name": "node",
+            "plural": false,
             "selections": [
+              (v0/*: any*/),
+              (v1/*: any*/),
+              (v2/*: any*/),
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "Template",
+                "concreteType": "Workflow",
                 "kind": "LinkedField",
-                "name": "node",
+                "name": "workflow",
                 "plural": false,
                 "selections": [
-                  (v0/*: any*/),
                   (v1/*: any*/),
-                  (v2/*: any*/),
-                  (v3/*: any*/)
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "WorkflowProperties",
+                    "kind": "LinkedField",
+                    "name": "properties",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "displayName",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  (v0/*: any*/),
+                  (v2/*: any*/)
                 ],
                 "storageKey": null
               }
@@ -138,6 +123,16 @@ return {
         "storageKey": null
       }
     ],
+    "storageKey": null
+  }
+];
+return {
+  "fragment": {
+    "argumentDefinitions": [],
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "NewsfeedQuery",
+    "selections": (v3/*: any*/),
     "type": "Query",
     "abstractKey": null
   },
@@ -146,78 +141,19 @@ return {
     "argumentDefinitions": [],
     "kind": "Operation",
     "name": "NewsfeedQuery",
-    "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "myGreeting",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "TemplateConnection",
-        "kind": "LinkedField",
-        "name": "templates",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "TemplateEdge",
-            "kind": "LinkedField",
-            "name": "edges",
-            "plural": true,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "Template",
-                "kind": "LinkedField",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  (v1/*: any*/),
-                  (v0/*: any*/),
-                  (v2/*: any*/),
-                  (v3/*: any*/)
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "concreteType": "Workflow",
-        "kind": "LinkedField",
-        "name": "workflow",
-        "plural": false,
-        "selections": [
-          (v1/*: any*/),
-          (v0/*: any*/),
-          (v2/*: any*/)
-        ],
-        "storageKey": null
-      }
-    ]
+    "selections": (v3/*: any*/)
   },
   "params": {
-    "cacheID": "2a2a7a373a00b48d5d7f59c2055e9a2e",
+    "cacheID": "7e3c44f5a815af1ff7a9b027ab2d89ef",
     "id": null,
     "metadata": {},
     "name": "NewsfeedQuery",
     "operationKind": "query",
-    "text": "query NewsfeedQuery {\n  ...ParentFragment\n  templates {\n    edges {\n      node {\n        name\n        id\n        type\n        workflow {\n          id\n          properties {\n            displayName\n          }\n          name\n        }\n      }\n    }\n  }\n}\n\nfragment ChildOneFragment on Query {\n  templates {\n    edges {\n      node {\n        id\n        name\n        type\n      }\n    }\n  }\n}\n\nfragment ChildTwoFragment on Query {\n  workflow {\n    id\n    name\n    type\n  }\n}\n\nfragment ParentFragment on Query {\n  myGreeting\n  ...ChildOneFragment\n  ...ChildTwoFragment\n}\n"
+    "text": "query NewsfeedQuery {\n  templates {\n    edges {\n      node {\n        name\n        id\n        type\n        workflow {\n          id\n          properties {\n            displayName\n          }\n          name\n          type\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "b7201a0b65701797c48127a0b2e6cbc9";
+(node as any).hash = "aac1dacaa53c489bc175adbf46d64f14";
 
 export default node;
