@@ -1,4 +1,4 @@
-import type { Query } from "./../../src/supermassive/resolvers.interface";
+import type { Query } from "../../supermassive/resolvers.interface";
 export const myGreeting: NonNullable<Query.Resolvers["myGreeting"]> = async (
   _parent,
   _arg,

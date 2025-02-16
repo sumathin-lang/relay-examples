@@ -22,9 +22,9 @@ import LiveResolverStore from "relay-runtime/lib/store/live-resolvers/LiveResolv
 // import { resolvers } from "../myschema/resolvers.generated";
 // import { getSchema } from "../../schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { templates } from "../../resolvers/Query/templates";
-import { myGreeting } from "../../resolvers/Query/myGreeting";
-import { workflow, WorkflowResolver } from "../../resolvers/Query/workflow";
+import { templates } from "../resolvers/Query/templates";
+import { myGreeting } from "../resolvers/Query/myGreeting";
+import { workflow, WorkflowResolver } from "../resolvers/Query/workflow";
 // import { Resolvers } from "../myschema/types.generated";
 import typeDefs from "../../schema.graphql";
 

@@ -1,6 +1,6 @@
 import { PromiseOrValue } from "graphql/jsutils/PromiseOrValue";
-import type { Query } from "./../../src/supermassive/resolvers.interface";
-import { TemplateConnection } from "../../src/supermassive/models.interface";
+import type { Query } from "../../supermassive/resolvers.interface";
+import { TemplateConnection } from "../../supermassive/models.interface";
 export const templates: MyRESOLVERTYPE = () => {
   return {
     edges: [

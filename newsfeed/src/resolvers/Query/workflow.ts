@@ -2,15 +2,21 @@ import { PromiseOrValue } from "graphql/jsutils/PromiseOrValue";
 import type {
   Query,
   Workflow as WorkflowType,
-} from "./../../src/supermassive/resolvers.interface";
-import type { Workflow } from "../../src/supermassive/models.interface";
+} from "../../supermassive/resolvers.interface";
+//import type { Workflow } from "../../src/supermassive/models.interface";
 
-type TEMPRESOLVERTYPE = (
-  model: unknown,
-  args: {},
-  context: unknown,
-  info: unknown
-) => PromiseOrValue<Workflow>;
+import * as Models from "../../supermassive/models.interface";
+
+type TEMPRESOLVERTYPE = NonNullable<
+  (
+    model: unknown,
+    args: {},
+    context: unknown,
+    info: unknown
+  ) => PromiseOrValue<Models.Workflow>
+>;
+
+type TEMPRESOLVERTYPE2 = NonNullable<Query.Resolvers["workflow"]>;
 
 export const workflow: TEMPRESOLVERTYPE = async (
   //NonNullable<Query.Resolvers["workflow"]> = async (
