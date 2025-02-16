@@ -1,7 +1,5 @@
-import { PromiseOrValue } from "graphql/jsutils/PromiseOrValue";
 import type { Query } from "../../supermassive/resolvers.interface";
-import { TemplateConnection } from "../../supermassive/models.interface";
-export const templates: MyRESOLVERTYPE = () => {
+export const templates: Query.Resolvers["templates"] = () => {
   return {
     edges: [
       {
@@ -39,14 +37,6 @@ export const templates: MyRESOLVERTYPE = () => {
     },
   };
 };
-
-type MyRESOLVERTYPE = (
-  model: unknown,
-  args: {},
-  context: unknown,
-  info: unknown
-) => PromiseOrValue<TemplateConnection>;
-type test2 = Query.Resolvers["templates"];
 
 // export const templates: NonNullable<Query.Resolvers["templates"]> = async (
 //   _parent,
