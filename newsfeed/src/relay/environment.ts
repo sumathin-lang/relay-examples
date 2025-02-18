@@ -255,7 +255,11 @@ const getWorkflowById = async (id: number) => {
   return { id, name: "workflow" + id, type: "CUSTOM-WF" + id.toString() };
 };
 
-const loaders = (): any => ({
+const loaders = (): {
+  getTeamplateByIndex: DataLoader<number, any>;
+  getAllTemplates: DataLoader<void, any>;
+  getWorkflowByIndex: DataLoader<number, any>;
+} => ({
   getTeamplateByIndex: new DataLoader((ids) => {
     console.log("DataLoader IDs", ids);
     return Promise.all(ids.map((id) => getTemplateById(Number(id))));
@@ -309,6 +313,7 @@ export function createEnvironment(): IEnvironment {
     network: Network.create(
       async (operations: RequestParameters, variables: Variables) => {
         try {
+          console.log("typedefs", typeDefs);
           const builtSchema = makeExecutableSchema({ typeDefs, resolvers });
           const result = await graphql({
             schema: builtSchema,

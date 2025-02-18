@@ -15,7 +15,7 @@
     "watch-server": "nodemon ./server/index.mjs",
     "dev": "concurrently npm:watch-* -c auto",
     "grats": "grats",
-    "sup-codegen": "supermassive generate-interfaces ./schema.graphql --output-dir=./src/supermassive",
+    "sup-codegen": "supermassive generate-interfaces ./schema.graphql --output-dir=./src/supermassive --context-type-path=./gql-context.ts --context-type-name=MyContext --generate-resolver-map",
     "sup-extract-schema": "supermassive extract-schema ./schema.graphql",
     "codegen": "graphql-codegen --config codegen.ts"
   },
